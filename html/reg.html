@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>小米帐号 - 注册</title>
+		<link rel="shortcut icon" href="https://shop.io.mi-img.com/static/h5/favicon.ico?v=1111">
+	</head>
+	<link rel="stylesheet" type="text/css" href="../css/public.css" />
+	<link rel="stylesheet" type="text/css" href="../css/reg.css" />
+	<body>
+		<header>
+			<div class="reg_w">
+				<h1>
+					<a href="#"><img src="../img/milogo.png"/></a>
+				</h1>
+				<h4>注册小米帐号</h4>
+			</div>
+		</header>
+
+
+
+
+
+
+
+
+		<main>
+			<div class="reg_w  center">
+
+					<form>
+						<p>国家/地区</p>
+						<div>
+							<span class="l">中国</span>
+							<span class="l"></span>
+						</div>
+						<p>成功注册帐号后，国家/地区将不能被修改</p>
+
+
+
+
+						<p>手机号码</p>
+
+						<div>
+							<span class="l startCode">+86<i class=".icon_arrow"></i></span>
+							<input id='userID'  class="l" type="text" placeholder="请输入手机号码" />
+						</div>
+
+						<p class="inputTxt"> × 手机号码格式错误</p>
+
+
+						<div id="btnReg">
+							<input  type="button" value="立即注册" />
+						</div>
+					</form>
+
+					<p> √ 注册帐号即表示您同意并愿意遵守小米 <span> 用户协议 </span>和 <span>隐私政策  </span></p>
+				</div>
+
+		</main>
+
+
+
+
+<!---------------------------这是footer------------------------>
+		<footer class="reg_w" id="footer">
+			<ul>
+				<li><a href="#">简体</a></li>
+				<li><a href="#">繁体</a></li>
+				<li><a href="#">English</a></li>
+				<li><a href="#">常见问题</a></li>
+			</ul>
+			<p>小米公司版权所有-京ICP备10046444-<img src="../img/ghs.png"/>京公网安备11010802020134号-京ICP证110507号</p>
+		</footer>
+
+
+
+	</body>
+</html>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+<script type="text/javascript">
+$(function(){
+	/*-------------注册的手机号验证*/
+	$("#userID").on("blur",function(){
+		let userIdStr = $(this).val();
+		let regId = /^1[34578]\d{9}$/;
+		if( userIdStr == ""){
+			$(".inputTxt").css({"display":"block"}).text("请输入手机号码");
+			$("#btnReg").css({"margin-top":0});
+		}else if( (regId).test(userIdStr) ){
+			$(".inputTxt").css({"display":"block"}).text(" √ 手机号码验证成功，请立即注册");
+			$("#btnReg").css({"margin-top":0});
+		}else if( !(regId).test(userIdStr) ){
+			$(".inputTxt").css({"display":"block"}).text(" × 手机号码格式错误");
+			$("#btnReg").css({"margin-top":0});
+		}
+	});
+
+
+
+
+});
+
+</script>

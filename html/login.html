@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>小米有品</title>
+		<link rel="shortcut icon" href="https://shop.io.mi-img.com/static/h5/favicon.ico?v=1111">
+	</head>
+	<link rel="stylesheet" href="../css/public.css" />
+	<link rel="stylesheet" href="../css/loginStyle.css" />
+	<body>
+
+
+<!------------------------------这是header的logo------------------------->
+
+	<header class="login_w">
+		<h1 class="login_w"><img src="../img/login-logo-mi.png"/></h1>
+		<h4 class="login_w">小米帐号登录</h4>
+		<img src="../img/login.gif"/>
+	</header>
+
+<!-------------------------------这是账号登录的页面------------------------->
+
+	<main id="user_login">
+		<article class="login_w login_first">
+			<div>
+				<input type="text" id="userID" placeholder="邮箱 / 手机号码 / 小米ID"/>
+			</div>
+
+			<div>
+				<input type="text"  id="passID" placeholder="密码"/>
+			</div>
+
+			<div>
+				<input type="button"  id="btn01" value="安全登录"/>
+			</div>
+
+			<ul>
+				<li class="l" id="message-login"><a href="#">手机短信登录/注册</a></li>
+				<li class="l"><a href="reg.html"><span>立即注册</span></a><a href="#"><span>忘记密码？</span></a></li>
+			</ul>
+
+			<fieldset class="oth_type_tit">
+				<legend align="center">其他方式登录</legend>
+			</fieldset>
+
+
+			<div class="oth_type_link">
+				<div class="center_link">
+					<a class="l" href="#"><img src="../img/qq.png"/></a>
+					<a class="l" href="#"><img src="../img/weibo.png"/></a>
+					<a class="l" href="#"><img src="../img/wechat.png"/></a>
+					<a class="l" href="#"><img src="../img/apliy.png"/></a>
+				</div>
+			</div>
+
+		</article>
+	</main>
+
+
+
+<!-----------------------------这是手机验证码登录的页面---------------------------------->
+
+
+	<main id='phone_number_login'>
+		<article class="login_w login_click">
+			<div>
+				<span class="l" ><span id="phoneNumStart" >+86</span></span>
+				<input class="l" type="text" id="userID" placeholder=" 手机号码  "/>
+			</div>
+
+			<div>
+				<input class="l" type="text"  id="passID" placeholder="短信验证码"/>
+				<span class="l" ><a id="judge-code" href="#">获取验证码</a></span>
+			</div>
+			<span id="message-title"></span>
+
+			<div>
+				<input type="button"  id="btn01" value="立即登录/注册"/>
+			</div>
+
+			<ul>
+				<li class="l" id="usernum-login"><a href="#">用户名密码登录</a></li>
+			</ul>
+
+			<fieldset class="oth_type_tit">
+				<legend align="center">其他方式登录</legend>
+			</fieldset>
+
+			<div class="oth_type_link">
+				<div class="center_link">
+					<a class="l" href="#"><img src="../img/qq.png"/></a>
+					<a class="l" href="#"><img src="../img/weibo.png"/></a>
+					<a class="l" href="#"><img src="../img/wechat.png"/></a>
+					<a class="l" href="#"><img src="../img/apliy.png"/></a>
+				</div>
+			</div>
+
+		</article>
+
+	</main>
+
+
+<!---------------------------这是footer------------------------>
+		<footer class="login_w" id="footer">
+			<ul>
+				<li><a href="#">简体</a></li>
+				<li><a href="#">繁体</a></li>
+				<li><a href="#">English</a></li>
+				<li><a href="#">常见问题</a></li>
+				<li><a href="#">隐私政策</a></li>
+			</ul>
+			<p>小米公司版权所有-京ICP备10046444-<img src="../img/ghs.png"/>京公网安备11010802020134号-京ICP证110507号</p>
+		</footer>
+
+
+	</body>
+</html>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+
+<script type="text/javascript">
+$(function(){
+//-------------------这是个人账号登录页面-----------------------------
+	$("#message-login").on("click",function(){
+		$("#phone_number_login").css({"display":"block"});
+
+		$("#phoneNumStart").css({"display":'block',"left":"-30px"}).animate({"left":15},400);
+
+		$("#user_login").css({"display":"none"});
+	});
+
+
+//------------------------------这是短信登录页面------------------------------
+
+	$("#usernum-login").on("click",function(){
+		$("#phone_number_login").css({"display":"none"});
+		$("#user_login").css({"display":"block"});
+
+	});
+
+
+
+//----------------------------这是获取验证码的倒计时----------------------------
+messageCount();
+Regular()
+
+
+
+
+});
+
+//=====================================$END=========================================
+
+
+/*-------------------------------这个是用户名（账号）和密码的正则验证------------------------------*/
+//-----账号验证-----
+function Regular(){
+	$("#userID").on("blur",function(){
+		let $username = $("#userID").val();
+		let regEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+		let regPhoneNum = /^1[34578]\d{9}$/;
+		if((regPhoneNum.test($username)) || (regEmail.test($username))){
+			$(this).parent().append('<span id="span_n1"></span>');
+			$("#span_n1").css({
+				position:"relative",
+				top:-32,
+				left:610,
+				width:50,
+				"display":"block",
+			}).text("  √ ");
+		}else{
+		    $(this).parent().append('<span id="span_n1"></span>');
+		    $("#span_n1").css({
+				position:"relative",
+				top:-32,
+				left:610,
+				width:50,
+				"display":"block",
+			}).text("  × ");
+		}
+	});
+
+
+
+//-----密码验证----------------
+	$("#passID").on("blur",function(){
+		let $password = $("#passID").val();//获取用户输入的内容
+
+		let regpass1 = /[a-zA-Z]/;  //大写字母或者小写字母
+		let regpass2 = /[0-9]/;     //0-9的数字
+		let regpass3 = /[\#!@$%]/;  //特殊符号
+
+		if( (regpass1.test($password)) || (regpass2.test($password)) || (regpass3.test($password)) ){
+			$(this).parent().append('<span id="span_n2"></span>');
+			$("#span_n2").css({
+				position:"relative",
+				top:-33,
+				left:610,
+				width:50,
+				"display":"block",
+			}).text("  √ ");
+		}else{
+		    $(this).parent().append('<span id="span_n2"></span>');
+		    $("#span_n2").css({
+				position:"relative",
+				top:-33,
+				left:610,
+				width:50,
+				"display":"block",
+			}).text("  × ");
+		}
+	});
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------这是获取验证码的倒计时----------------------------
+function messageCount(){
+	let count = 0;
+	let timer = null;
+	$("#judge-code").on("click",function(){
+		if(timer==null){
+			count++;
+			if(count>5){
+				$("#judge-code").html("亲，您今日还有一次获取验证码的机会");
+				return;
+			}
+
+			let num = 60;
+
+			timer = setInterval(function(){
+			    num--;
+		  		$("#judge-code").html("重新发送(" + num + ")");
+		  		if(num==0){
+					clearInterval(timer);
+					timer = null;
+					$("#judge-code").html("获取验证码");
+		  		}
+			},1000);
+		}
+	});
+}
+
+
+
+</script>

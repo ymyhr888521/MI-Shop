@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*=================================公共样式=====================================*/
+a{color:#666; text-decoration:none;cursor:pointer;}
+a:hover{text-decoration:none;}
+body,html,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,p,header,footer,article,aside,section,nav,menu,details,figure,figcaption{margin:0;padding:0}
+header,footer,article,aside,section,nav,menu,details,figure,figcaption{display:block}
+body{overflow-x:hidden;}
+ol,ul,dl{list-style:none;}
+
+
+icon{padding:0;margin:0;}
+
+button,submit,input,select {vertical-align:middle;}
+input[type=button],input[type=submit]{cursor:pointer;}
+
+.l{float:left;}
+.r{float:right;}
+.w{width:1080px;margin:auto}
+.login_w{width:854px;margin:auto}
+.reg_w{width:854px;margin:auto}
+
+input{outline:none;}
+body{font-size:14px;color:#3e3e3e;font-family:arial,"Hiragino Sans GB","Microsoft YaHei","微軟正黑體","儷黑 Pro",sans-serif;}
+
+
+/*====================================字体小图标==================================*/
+@font-face {
+  font-family: 'iconfont';
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../font/iconfont.woff') format('woff'),
+  url('../font/iconfont.ttf') format('truetype'),
+  url('../font/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont{
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
