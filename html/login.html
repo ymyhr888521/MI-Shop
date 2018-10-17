@@ -23,11 +23,14 @@
 	<main id="user_login">
 		<article class="login_w login_first">
 			<div>
-				<input type="text" id="userID" placeholder="邮箱 / 手机号码 / 小米ID"/>
+				<input type="text" id="userID" class="user-phone-num" placeholder="邮箱 / 手机号码 / 小米ID"/>
 			</div>
 
 			<div>
 				<input type="text"  id="passID" placeholder="密码"/>
+					<div class="color">
+						<span class="color-nth1"> 弱 </span>
+					</div>
 			</div>
 
 			<div>
@@ -65,7 +68,7 @@
 		<article class="login_w login_click">
 			<div>
 				<span class="l" ><span id="phoneNumStart" >+86</span></span>
-				<input class="l" type="text" id="userID" placeholder=" 手机号码  "/>
+				<input class="l user-phone-num" type="text" id="userID" placeholder=" 手机号码  "/>
 			</div>
 
 			<div>
@@ -153,67 +156,89 @@ Regular()
 
 /*-------------------------------这个是用户名（账号）和密码的正则验证------------------------------*/
 //-----账号验证-----
+
 function Regular(){
-	$("#userID").on("blur",function(){
-		let $username = $("#userID").val();
-		let regEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-		let regPhoneNum = /^1[34578]\d{9}$/;
-		if((regPhoneNum.test($username)) || (regEmail.test($username))){
-			$(this).parent().append('<span id="span_n1"></span>');
-			$("#span_n1").css({
-				position:"relative",
-				top:-32,
-				left:610,
-				width:50,
-				"display":"block",
-			}).text("  √ ");
-		}else{
-		    $(this).parent().append('<span id="span_n1"></span>');
-		    $("#span_n1").css({
-				position:"relative",
-				top:-32,
-				left:610,
-				width:50,
-				"display":"block",
-			}).text("  × ");
-		}
+//---------检查用户名
+	$(".user-phone-num").each(function(){
+		$(this).parent().append('<span id="span_n1"></span>');
+		$("#span_n1").css({
+			position:"relative",
+			top:-34,
+			left:610,
+			width:50,
+			"display":"none",
+		});
+
+
+		$(this).keyup(function(){
+			let $username = $(this).val();
+			let regEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+			let regPhoneNum = /^1[34578]\d{9}$/;
+			if((regPhoneNum.test($username)) || (regEmail.test($username))){
+				$(this).parent().children("#span_n1")
+				.text("  √  ").css('font-size',"20px").show("slow");
+			}else{
+				$(this).parent().children("#span_n1")
+				.text("  ×  ").css('font-size',"22px").show("slow");
+			}
+		})
 	});
+
+
+
 
 
 
 //-----密码验证----------------
-	$("#passID").on("blur",function(){
-		let $password = $("#passID").val();//获取用户输入的内容
+	$("#passID").keyup(function(){
+		var $password = $("#passID").val();//获取用户输入的内容
+		//长度，6-16；
+		//弱：纯数字，纯字母，纯特殊字符
+		//中：两个的组合
+		//强：三个组合
+	if($password.length>=6 && $password.length<=16){
+		//1.先判断是否有数字
+		var hasnum = false;
+		var numReg = /\d/;
+			if(numReg.test($password)){
+				hasnum = true;
+			}
+//		<span class="color-nth3"> 强 </span>
 
-		let regpass1 = /[a-zA-Z]/;  //大写字母或者小写字母
-		let regpass2 = /[0-9]/;     //0-9的数字
-		let regpass3 = /[\#!@$%]/;  //特殊符号
+		//2.先判断是否有字母
+		var hasletter = false;
+		var letterReg = /[a-zA-Z]/;
+			if(letterReg.test($password)){
+				hasletter = true;
+			}
 
-		if( (regpass1.test($password)) || (regpass2.test($password)) || (regpass3.test($password)) ){
-			$(this).parent().append('<span id="span_n2"></span>');
-			$("#span_n2").css({
-				position:"relative",
-				top:-33,
-				left:610,
-				width:50,
-				"display":"block",
-			}).text("  √ ");
-		}else{
-		    $(this).parent().append('<span id="span_n2"></span>');
-		    $("#span_n2").css({
-				position:"relative",
-				top:-33,
-				left:610,
-				width:50,
-				"display":"block",
-			}).text("  × ");
+
+		//2.先判断是否有特殊字符
+		var hasspecial = false;
+		var specialReg = /[!@#$%^&*_-]/;
+			if(specialReg.test($password)){
+				hasspecial = true;
+			}
+
+		var Level = hasletter + hasspecial + hasnum;//3
+
+		$(".color-nth1").css({"font-size":"20px"}).html("弱");
+		if(Level==1){
+			$(".color").show("slow");
+			$(".color-nth1").css("background","#FF3300").html(" 弱 ");
+		}else if(Level==2){
+			$(".color").show("slow");
+			$(".color-nth1").css("background","#FFFF00").html(" 中 ");
+		}else if(Level==3){
+			$(".color").show("slow");
+			$(".color-nth1").css("background","#00ff00").html(" 强 ");
 		}
-	});
+	}else{
+		$(".color").show();
+		$(".color-nth1").css({"font-size":"20px","background":"#fff"}).html(" × ");
+		}
+	})
 }
-
-
-
-
 
 
 

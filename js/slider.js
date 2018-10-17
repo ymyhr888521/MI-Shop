@@ -106,12 +106,13 @@ Slider.prototype.showLi=function(){
 	//    B、改豆豆
 	this.$lis.eq(this.currOrd)
 	.css({"backgroundColor":this.doudouHighColor,
-		  'width':this.doudouSize+4+"px",
-		  borderRadius:'10px',
+		  'width':this.doudouSize+"px",
 	})
 	.siblings()
 	.css({"backgroundColor":this.doudouColor,
-		  'width':this.doudouSize+"px"
+		  'width':this.doudouSize+"px",
+		  "border":0,
+
 	});
 }
 
