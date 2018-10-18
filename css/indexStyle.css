@@ -26,6 +26,7 @@ nav>div>div>input{
 					border-bottom:1px solid #999;
 					padding-left:8px;
 					color:#777;
+
 				}
 nav>div>a{position:absolute;right:5px;top:15px;}
 nav>div>a>i{font-size:24px;}
@@ -177,36 +178,9 @@ div#adShow>ul>li:nth-of-type(4)>div>p{font-size:12px}
 #playBox>div:nth-child(1)>div.first+div.big~div img{width:175px;height:117px;position: absolute;bottom:10px;right:35px}
 
 
-/*======================================小米众筹====================================*/
-
-
-#playBox2{height:440px;}
-#playBox2>div:nth-of-type(1){height:440px;}
-#playBox2>div:nth-child(1)>div.first{height:74px;width:100%;}
-#playBox2>div:nth-child(1)>div.first>h3{line-height:74px;font-size: 28px;font-weight:100;}
-#playBox2>div:nth-child(1)>div.first>span{margin-left:12px;color: #999;line-height:85px;}
-
-#playBox2>div:nth-child(1)>div.first+div.big{width:537px;height:230px;position: relative;background:#f3f0e9;border-bottom:3px solid #f30}
-#playBox2>div:nth-child(1)>div.first+div.big img{width:257;height:183px;position: absolute;right:15px;bottom:10px;}
-#playBox2>div:nth-child(1)>div.first+div.big p:nth-of-type(1){font-size:20px;padding-left:20px;padding-top:20px;}
-#playBox2>div:nth-child(1)>div.first+div.big p:nth-of-type(2){color: #999;font-size:16px;line-height:20px;height:20px;margin-top:5px;padding-left:20px;}
-#playBox2>div:nth-child(1)>div.first+div.big p:nth-of-type(3){font-size: 24px;line-height:28px;height:28px;color: #a92112;margin-top:16px;padding-left:20px}
-#playBox2>div:nth-child(1)>div.first+div.big h3{width:537px;height:30px;position: absolute;bottom:-50px;left:20px;color:#999;font-weight: 100;}
-#playBox2>div:nth-child(1)>div.first+div.big h3>span:nth-of-type(1){color: #a92112;font-size: 20px;font-weight: 100;}
-#playBox2>div:nth-child(1)>div.first+div.big h3>span:nth-of-type(2){background:#f60;color:#fff;display:inline-block;padding:0 5px}
-
-#playBox2>div:nth-child(1)>div.first+div.big~div{width:266px;height:230px;margin-left:5px;position:relative;border-bottom:3px solid #f60}
-#playBox2>div:nth-child(1)>div.first+div.big+div{background:rgb(234, 240, 230);}
-
-#playBox2>div:nth-child(1)>div.first+div.big+div+div{background:rgb(241, 233, 235);}
-
-#playBox2>div:nth-child(1)>div.first+div.big~div p:nth-of-type(1){font-size:20px;padding-left:10px;padding-top:20px}
-#playBox2>div:nth-child(1)>div.first+div.big~div p:nth-of-type(2){font-size: 20px;line-height: 24px;height:24px;color:#a92112;margin-top:11px;padding-left:10px;}
-#playBox2>div:nth-child(1)>div.first+div.big~div img{width:175px;height:117px;position: absolute;bottom:10px;right:35px}
-
 
 /*======================================热门====================================*/
-article{height:1110px;background: #eee;}
+article{height:555px;background: #eee;}
 article>div{height:510px;width:100%;padding-top:45px;overflow:hidden;position: relative;}
 
 article .w .left{
@@ -277,12 +251,33 @@ article>div div img{width:100%;height:266px;margin-bottom:20px;}
 #list>div>h2 span{color:#999;font-size:14px;font-weight:100;}
 #list>div>h2 span:nth-of-type(1){margin-left:12px}
 #list>div>h2 a{position: absolute;right:10px;}
-#list>div div.l{width:266px;height:414px;margin-right:5px;margin-bottom: 8px;transition:.2s;box-sizing: border-box;border: 1px solid #eee;background:#f8f8f8;;}
-#list>div div.l:hover{margin-top:-2px;margin-bottom:10px;box-shadow:-2px 0px 10px #eee,2px 0px 10px #eee,0px -2px 4px #eee;}
+#list>div div.l{overflow:hidden;width:266px;border-radius:10px;height:414px;margin-right:5px;margin-bottom: 8px;transition: all .33s linear;box-sizing: border-box;border: 1px solid #eee;background:#f8f8f8;;}
+#list>div div.l:hover{margin-top:-25px;margin-bottom:33px;box-shadow:-13px -5px 40px #e1e2e1,10px -5px 40px #e3e3e3,0px -5px 20px #e2e3e1,0px 10px 20px #c2c3e3;}
 
 #list>div div img{background:#fff;}
 #list>div div:nth-of-type(4n){margin-right:0px;}
-
+#list>div div span:nth-last-of-type(1){
+	display: inline-block;
+	width:60px;
+	height:20px;
+	background-color: rgb(225, 134, 98);
+	padding: 0 6px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 22px;
+    border-radius: 2px;
+    }
+#list>div div span:nth-last-of-type(2){
+	display: inline-block;
+	width:60px;
+	height:20px;
+	background-color: rgb(225, 134, 98);
+	padding: 0 6px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 22px;
+    border-radius: 2px;
+    }
 /*----让最下面的大盒子里面的小盒子分离*/
 
 

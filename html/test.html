@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript" src="../js/cookieTools.js" ></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+<script type="text/javascript">
+$(function(){
+	//1、从cookie中读取商品编号goodsid
+	let goodsid = getCookie("goodsid");
+
+	//2、发送ajax请求，获取商品信息
+	$.ajax({
+		type:"get",
+		url:"../php/getGoodsInfo.php",
+		async:true,
+		data:{
+			"goodsId":goodsid
+		},
+		success:function(data){
+			console.log(data)
+			$("#goodsname").html(data.goodsname);
+			$("#goodsprice").html(data.goodsprice);
+			$("#goodscount").html(data.goodscount);
+			$("#goodsimg").attr("src",data.goodsImg);
+		},
+		dataType:"json"
+	});
+});
+
+
+</script>

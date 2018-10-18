@@ -1,0 +1,62 @@
+{
+    "M": [
+        {
+            "h2": "配件",
+            "goods": [
+                {   "imgurl" :"img/se.png",
+			        "dis":	"小米8青春版",
+			        "span":"",
+			        "title" : "骁龙845处理器，双频GPS",
+			        "price" : "￥ 1399起"
+                },
+                {  "imgurl" :"img/m1.jpg",
+			        "dis":	"小米8SE",
+     				"span":"",
+			        "title" : "骁龙845处理器，双频GPS",
+			        "price" : "￥ 1799起"
+                },
+                {   "imgurl" :"img/lite.png",
+			        "dis":	"小米8青春无敌版",
+			        "span":"",
+			        "title" : "小米8青春版，镜面渐变色",
+			        "price" : "￥ 2499起"
+                },
+                {  "imgurl" :"img/m1.jpg",
+			        "dis":  "小米8指纹版",
+    				 "span":"",
+			        "title" : "骁龙845处理器，双频GPS",
+			        "price" : "￥ 2999起"
+                }
+            ]
+         },
+         {
+            "h2": "手机",
+            "goods": [
+                {   "imgurl" :"img/lite.png",
+			        "dis":	"小米8标准版",
+			        "span":"",
+			        "title" : "骁龙845处理器，双频GPS",
+			        "price" : "￥ 1699起"
+                },
+                {  "imgurl" :"img/m2.jpg",
+			        "dis":	"小米8青春",
+			             "span":"限时降价200",
+			        "title" : "骁龙845处理器，双频GPS",
+			        "price" : "￥ 2499起"
+                },
+                {   "imgurl" :"img/m3.jpg",
+			        "dis":	"小米8透明探索版",
+			        "span":"",
+			        "title" : "小米8青春版，镜面渐变色",
+			        "price" : "￥ 1399起"
+                },
+                {  "imgurl" :"img/se.png",
+			        "dis":  "小米8SE高配版",
+			        "span":"限时降价200",
+			        "title" : "骁龙710处理器，大型游戏无压力",
+			        "price" : "￥ 1999起"
+   				}
+            ]
+        }
+    ]
+}

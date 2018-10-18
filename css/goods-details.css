@@ -38,8 +38,22 @@ nav>div>div>input{
 nav>div>div>input::-webkit-input-placeholder{color:#000;}
 
 nav>div>a{position:absolute;right:5px;top:15px;}
-nav>div>a>i{font-size:24px;}
-
+nav>div>a>i{font-size:24px;position:relative}
+nav>div>a>span{
+	display:inline-block;
+	width:21px;
+	height:17px;
+	border-radius:8px;
+	position: absolute;
+	top:-4px;
+	left:8px;
+	text-align: center;
+	line-height: 17px;
+	color: #fff;
+	font-size: 14px;
+	background-color: #c00000;
+	display: none;
+}
 
 
 /*=====================================这是鼠标滑动时候nav固定的样式======================================*/

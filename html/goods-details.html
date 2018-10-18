@@ -57,7 +57,7 @@
 				<div class="r">
 					<input type="text" id='sosoInput' value="&#xe628;&nbsp&nbsp收假欢庆" class="iconfont" />
 				</div>
-				<a class="l"><i class="iconfont">&#xe501;</i></a>
+				<a class="l"><i class="iconfont">&#xe501;</i><span class="goods-num-cart"></span></a>
 			</div>
 		</nav>
 
@@ -1352,9 +1352,9 @@
 						<p class="l">数量</p>
 						<div class="num-Count">
 							<div class="calculate">
-								<span class="l"> - </span>
+								<span class="l del"> - </span>
 								<input type="text" class="num-add-del l" value="1"/>
-								<span class="l"> + </span>
+								<span class="l add"> + </span>
 							</div>
 						</div>
 					</div>
@@ -1483,8 +1483,11 @@ $(function(){
 	/*----鼠标点击小图大图会同步相应的图片------*/
 	smallImgsClick();
 
+	//------这个是轮播图里面的两个小按钮的点击事件
 	sliderSmallImgsClick();
 
+
+	delAddBtn();
 });
 
 
@@ -1507,6 +1510,7 @@ $(function(){
 //})
 
 
+//------这个是轮播图里面的两个小按钮的点击事件
 function sliderSmallImgsClick(){
 	let move = false;
 	$(".Top").click(function(){
@@ -1539,8 +1543,6 @@ function sliderSmallImgsClick(){
 				move = false;
 			},300)
 		}
-
-
 	});
 }
 
@@ -1548,26 +1550,62 @@ function sliderSmallImgsClick(){
 
 
 
-	$(".small-Img").mousedown(function(e){
-//		console.log(e.offsetX,e.offsetY)//----距离父子的TOP和LEFT
-		let left1 = $(".small-Img").position().left;
-		let top1 = $(".small-Img").position().top;
-		console.log(left1,top1);
-		if( (e.pageX-left1 >0 || e.pageX-left1  <=98) && (e.pageY-top1 >=327 || e.pageY-top1<425) ){
-			$(this).children(".box-img-slider").animate({"top":-109},100);
-
-		}
-
-
+	$(".box-img-slider div").each(function(i){
+		$(this).mousedown(function(){
+			if(i==3){
+				$(this).parent().animate({"top":-109},100)
+				}else if(i==1){
+					$(this).parent().animate({"top":0},100)
+				}
+			})
+		});
 
 
 
 
-//			if(i==3){
-//				$(this).parent().animate({"top":-109},100);
-//			}
 
+
+
+
+	$(".color-select,.level").children().each(function(){
+			$(this).click(function(){
+				$(this).css({'border':'1px solid #845f3f','color':'#845f3f'});
+				$(this).siblings().css({'border':'1px solid #d6d6d6','color':'#333'});
+			})
 	});
+
+
+function delAddBtn(){
+
+	var numStr = parseInt( $(".num-add-del").val() );
+	$(".num-add-del").keyup(function(){
+		numStr = parseInt( $(".num-add-del").val() );
+	});
+
+	$(".add").click(function(){
+		numStr++;
+		if(numStr>=5){
+			numStr = 5;
+			$('.add').css({'color':'#ccc','cursor':'not-allowed'})
+		}
+		$(".num-add-del").val(numStr);
+	});
+
+	$(".del").click(function(){
+		$('.add').css({'color':'#3e3e3e','cursor':'pointer'});
+		numStr--;
+		if(numStr<=1){
+			numStr =1;
+		}
+		$(".num-add-del").val(numStr);
+	});
+
+	$(".join-shopcart").click(function(){
+		$(".goods-num-cart").css('display','block').html(numStr);
+	});
+
+}
+
 
 
 
