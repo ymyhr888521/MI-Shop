@@ -1277,19 +1277,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--这个是侧边的广告-->
 		<div id="adShow">
 			<ul>
@@ -1419,6 +1406,51 @@
 
 
 
+
+			<!---------------------具体商品-------->
+			<div class="goods-list w">
+
+				<div class="selsect l">
+					<a href="#"></a>
+				</div>
+
+
+
+				<div class="image l">
+					<img src="../img/goodsimg.png" />
+				</div>
+
+
+				<div class="name l">
+					<p><a href="#">九安微网雾化器</a></p>
+				</div>
+
+
+				<div class="price-div l">
+					<span>￥ 199</span>
+				</div>
+
+
+				<div class="count l">
+					<span class="less"> - </span>
+					<span class="pri"> 1 </span>
+					<span class="add"> + </span>
+				</div>
+
+
+				<div class="subtotal l">
+					<span class="unit-price">￥ 199.00</span>
+				</div>
+
+
+
+				<div class="del l">
+					<a class="del-icon" href="#"></a>
+				</div>
+			</div>
+
+
+
 			<!---------------------底部计算-------->
 			<div class="cart-total-bottom w">
 
@@ -1432,7 +1464,7 @@
 
 
 				<div class="totalAll l">
-					<p>合计：<span class="total-price">￥  199.00</span></p>
+					<p>合计：<span class="total-price">￥  398.00</span></p>
 				</div>
 
 
@@ -1672,7 +1704,8 @@
 
 
 
-<div class="overlay">
+	<div class="overlay">
+
 	<div class="del-yes-cancel">
 		<a class="iconX" href="#"> X </a>
 		<div>
@@ -1726,48 +1759,111 @@ $(function(){
 
 	shoppingCart();
 	function shoppingCart(){
-		var subpri = parseInt( $(".price-div span").html().slice(1) );//单价
-
-		var numStr = parseInt( $(".pri").html() );//数量
-
-		var subtotal = parseInt($(".unit-price").html().slice(1) );//总价
+//		var subpri = parseInt( $(".price-div span").html().slice(1) );//单价
+//
+//		var numStr = parseInt( $(".pri").html() );//数量
+//
+//		var subtotal = parseInt($(".unit-price").html().slice(1) );//总价
 
 	    //subtotal = subpri*numStr;//这是单价乘数量 = 总价
 
-		var allPrice = 0;//这是结算时候的价钱
+//		var allPrice = 0;//这是结算时候的价钱（ 总结算 = 每个商品后面的总价钱加在一起 ）
+//		$('.total-price').html("￥ "+398+".00")
+	$('.add').click(function(){
+		let goods_price = $(this).parents(".goods-list").find('.price-div span');//这是获取单行商品的单价
+
+		let goods_num = $(this).parent(".count").find('.pri');//这是获取单行商品的数量
+
+		let total_price = $(this).parents(".goods-list").find('.unit-price')//这是获取单行商品的总价
+
+		goods_num.html(parseInt( goods_num.html() )+1);//每次点击一次加，就加一次
+
+		if(goods_num.html() >= 5){
+			goods_num.html(5);
+			$(this).css({'cursor':'not-allowed'})
+		}
+		//算一下单行的总价
+		let total_Line=  parseFloat( goods_price.html().slice(1) ) * parseInt( goods_num.html() )
+		total_price.html("￥ " + total_Line + ".00");
+
+//		let all_pri = parseFloat( $(".total-price").html().slice(1) );
+		let all_pri = 0
+		$(".unit-price").each(function(){
+			all_pri += parseFloat( $(this).html().slice(1) )
+		})
+		$(".total-price").html("￥ " +all_pri+".00");
 
 
-		$(".add").click(function(){
-			numStr++;
-			$(".pri").html(numStr);
+	})
 
-			subtotal = subpri*numStr;//这是单价乘数量 = 总价
+	$('.less').click(function(){
 
-			$(".unit-price").html("￥" + subtotal +".00");
-			allPrice =  subtotal;
-			$(".total-price").html("￥" + allPrice+".00");
+		let goods_price = $(this).parents(".goods-list").find('.price-div span');//这是获取单行商品的单价
+
+		let goods_num = $(this).parent(".count").find('.pri');//这是获取单行商品的数量
+
+		let total_price = $(this).parents(".goods-list").find('.subtotal span')//这是获取单行商品的总价
+
+		goods_num.html(parseInt( goods_num.html() )-1);//每次点击一次加，就加一次
+		$(".add").css({'cursor':'pointer'})
+		if(goods_num.html() <= 1){
+			goods_num.html(1);
+			$(".less").css({'cursor':'pointer'})
+		}
+		//算一下单行的总价
+		let total_Line=  parseFloat( goods_price.html().slice(1) ) * parseInt( goods_num.html() )
+		total_price.html("￥ " + total_Line + ".00");
+
+		let all_pri = 0
+		$(".unit-price").each(function(){
+			all_pri += parseFloat( $(this).html().slice(1) )
+		})
+		$(".total-price").html("￥ " +all_pri+".00");
+
+	})
+
+
+
+
+
+
+
+
+
+
+
 //
-		});
-
-
-
-		$(".less").click(function(){
-			numStr--;
-			if(numStr<=1){
-				numStr=1;
-			}
-
-			$(".pri").html(numStr);
-
-
-			subtotal = subpri*numStr;
-			$(".unit-price").html("￥" + subtotal+".00");
-			allPrice =  subtotal;
-			$(".total-price").html("￥" + allPrice+ ".00");
-
-		});
-
-
+//		$(".add").click(function(){
+//			numStr++;
+//			$(".pri").html(numStr);
+//
+//			subtotal = subpri*numStr;//这是单价乘数量 = 总价
+//
+//			$(".unit-price").html("￥" + subtotal +".00");
+//			allPrice =  subtotal;
+//			$(".total-price").html("￥" + allPrice+".00");
+////
+//		});
+//
+//
+//
+//		$(".less").click(function(){
+//			numStr--;
+//			if(numStr<=1){
+//				numStr=1;
+//			}
+//
+//			$(".pri").html(numStr);
+//
+//
+//			subtotal = subpri*numStr;
+//			$(".unit-price").html("￥" + subtotal+".00");
+//			allPrice =  subtotal;
+//			$(".total-price").html("￥" + allPrice+ ".00");
+//
+//		});
+//
+//
 
 
 //	subtotal = subpri*numStr;
@@ -1780,11 +1876,14 @@ $(function(){
 //			$(".overlay").css({'display':"block"});
 //		});
 //
-
-		$(".del-icon").click(function(){
+   		let index = 0;
+		$(".del-icon").each(function(i){
+			$(this).click(function(){
+				index = i;
 			$(".overlay").css({'display':"block"});
 		});
 
+		})
 
 
 		$(".iconX").click(function(){
@@ -1794,7 +1893,7 @@ $(function(){
 
 		$(".yes").click(function(){
 			$(".overlay").css({'display':"none"});
-			$(".goods-list").hide("slow");
+			$(".goods-list").eq(index).hide("slow");
 			$(".total-price").html("￥"+allPrice+".00");
 		});
 

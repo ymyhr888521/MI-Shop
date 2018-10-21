@@ -273,9 +273,12 @@ padding-top:60px;
     font-size: 12px;
     color: #999;
 
+
 }
 .introduce-product>p:nth-of-type(2){
-	margin: 16px 0;
+	margin: 19px 0;
+	color: #999;
+	font-size: 12px;
 
 }
 .introduce-product>p:nth-of-type(2) a:nth-of-type(1){
@@ -286,6 +289,7 @@ padding-top:60px;
     border: 1px solid #c00002;
     color: #c00000;
     margin-right: 6px;
+    margin-left: 3px;;
     font-size: 12px;
     cursor: pointer;
     display: inline-block;
@@ -303,7 +307,7 @@ padding-top:60px;
 
 .introduce-product .card-show{
 	margin-bottom: 26px;
-    padding-top:20px;
+    padding-top:25px;
     background-color: #f9f9f9;
     width:541px;
     height:121px;
